@@ -25,10 +25,10 @@ pip install -r requirements.txt
 ```env
 DATABASE_URL=sqlite:///./tasks.db
 SECRET_KEY=Computiqmuntezer
+المفتاح للتجربة فقط
 APP_NAME=Task Manager API
 ```
 
-المفتاح مستخدم فقط للتجربة.
 
 بعدين شغل المشروع:
 
