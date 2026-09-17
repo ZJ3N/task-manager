@@ -21,7 +21,6 @@ class Task(SQLModel, table=True):
 
     id: int | None = Field(default=None, primary_key=True)
     title: str
-    description: str | None = None
     priority: Priority = Priority.medium
     status: Status = Status.todo
     due_date: datetime | None = None

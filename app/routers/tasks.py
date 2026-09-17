@@ -30,7 +30,6 @@ def create_task(
 ):
     task = Task(
         title=task_data.title,
-        description=task_data.description,
         priority=task_data.priority,
         due_date=task_data.due_date,
         user_id=current_user.id,

@@ -1,4 +1,4 @@
-from datetime import datetime
+from datetime import datetime, timedelta
 
 from pydantic import BaseModel, field_validator
 
@@ -27,7 +27,6 @@ class UserCreateRequest(BaseModel):
 
 class TaskCreateRequest(BaseModel):
     title: str
-    description: str | None = None
     priority: Priority = Priority.medium
     due_date: datetime | None = None
 
@@ -41,16 +40,15 @@ class TaskCreateRequest(BaseModel):
     @field_validator("due_date")
     @classmethod
     def due_date_not_in_past(cls, v: datetime | None) -> datetime | None:
-     if v is not None:
-        now = datetime.now(v.tzinfo) if v.tzinfo else datetime.utcnow()
-        if v < now:
-            raise ValueError("Due date cannot be in the past")
-     return v
+        if v is not None:
+            now = datetime.now(v.tzinfo) if v.tzinfo else datetime.utcnow()
+            if v < now - timedelta(seconds=10):
+                raise ValueError("Due date cannot be in the past")
+        return v
 
 
 class TaskUpdateRequest(BaseModel):
     title: str | None = None
-    description: str | None = None
     priority: Priority | None = None
     due_date: datetime | None = None
 

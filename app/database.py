@@ -6,7 +6,6 @@ from app.models import Task, User
 engine = create_engine(
     settings.database_url,
     echo=True,
-    connect_args={"check_same_thread": False},
 )
 
 

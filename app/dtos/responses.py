@@ -1,7 +1,8 @@
 from datetime import datetime
 
-from app.enums import Priority, Role, Status
 from pydantic import BaseModel
+
+from app.enums import Priority, Role, Status
 
 
 class UserResponse(BaseModel):
@@ -20,9 +21,8 @@ class TokenResponse(BaseModel):
 class TaskResponse(BaseModel):
     id: int
     title: str
-    description: str | None
     priority: Priority
     status: Status
     due_date: datetime | None
-    created_at: datetime
+    date_created: datetime
     user_id: int

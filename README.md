@@ -10,7 +10,8 @@
 * إضافة وتعديل وحذف المهام
 * إكمال المهمة
 * عرض المهام
-* SQLite و SQLModel
+* PostgreSQL و SQLModel
+* Docker
 
 ## التشغيل
 
@@ -20,10 +21,16 @@
 pip install -r requirements.txt
 ```
 
-سوي ملف اسمه `.env` وحط بيه:
+شغل PostgreSQL باستخدام Docker:
+
+```bash
+docker compose up -d
+```
+
+سوي ملف اسمه `.env` وحط بيه إعدادات قاعدة البيانات:
 
 ```env
-DATABASE_URL=sqlite:///./tasks.db
+DATABASE_URL=postgresql://postgres:mysecretpassword@localhost:5432/taskdb
 SECRET_KEY=Computiqmuntezer
 APP_NAME=Task Manager API
 ```
@@ -80,4 +87,12 @@ python create_admin.py
 
 ## Database
 
-المشروع يستخدم **SQLite** لحفظ المستخدمين والمهام.
+المشروع كان يستخدم **SQLite**، وتم تحويل قاعدة البيانات إلى **PostgreSQL**.
+
+تم استخدام **Docker** لتشغيل PostgreSQL وحفظ البيانات.
+
+## Updates
+
+* تم تصليح خطأ **500** عند إنشاء Task وتحديثها.
+* تم تحويل قاعدة البيانات من **SQLite** إلى **PostgreSQL**.
+* تم إضافة إعداد PostgreSQL باستخدام **Docker**.
