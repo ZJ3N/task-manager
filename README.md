@@ -32,10 +32,10 @@ docker compose up -d
 ```env
 DATABASE_URL=postgresql://postgres:mysecretpassword@localhost:5432/taskdb
 SECRET_KEY=Computiqmuntezer
+المفتاح للتجربة فقط
 APP_NAME=Task Manager API
 ```
 
-المفتاح مستخدم فقط للتجربة.
 
 بعدين شغل المشروع:
 
